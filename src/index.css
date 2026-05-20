@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, monospace;
+
+  --color-hospital-navy: #0F172A;
+  --color-hospital-slate: #1E293B;
+  --color-accent-teal: #00D4C8;
+  --color-accent-amber: #FFB347;
+  --color-accent-crimson: #FF4444;
+}
+
+@layer base {
+  body {
+    @apply bg-hospital-navy text-slate-100 font-sans antialiased;
+  }
+}
+
+.clip-path-hex {
+  clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+}
+
+@keyframes pulse-teal {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(0, 212, 200, 0.4); }
+  50% { box-shadow: 0 0 0 10px rgba(0, 212, 200, 0); }
+}
+
+@keyframes pulse-amber {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(255, 179, 71, 0.4); }
+  50% { box-shadow: 0 0 0 15px rgba(255, 179, 71, 0); }
+}
+
+@keyframes pulse-crimson {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(255, 68, 68, 0.4); }
+  50% { box-shadow: 0 0 0 20px rgba(255, 68, 68, 0); }
+}
+
+.pulse-teal { animation: pulse-teal 2s infinite; }
+.pulse-amber { animation: pulse-amber 2s infinite; }
+.pulse-crimson { animation: pulse-crimson 2s infinite; }
