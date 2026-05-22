@@ -764,6 +764,15 @@ const Header = ({ studentInfo }: { studentInfo?: { login: string, id: string } }
           <h1 className="font-mono text-sm font-bold tracking-tighter uppercase leading-none">Scan2<span className="text-accent-teal">BSafe</span></h1>
           <p className="text-[10px] text-slate-400 font-mono tracking-widest uppercase mt-0.5">BCMA Simulation Unit</p>
         </div>
+            <a
+               href="https://sudo-mia-92.github.io/BCMA-Scan2BSafeWebsite"
+               target="_blank"
+               rel="noopener noreferrer"
+               className="ml-6 inline-flex items-center gap-2 text-accent-teal hover:underline text-[12px] font-mono"
+            >
+               <Globe size={14} />
+               <span className="font-bold">Main Website</span>
+            </a>
       </div>
 
       {studentInfo && (
@@ -944,9 +953,21 @@ export default function App() {
               Initialize Environment
               <ArrowRight className="group-hover:translate-x-1 transition-transform" size={18} />
             </button>
-          </form>
-          
-          <div className="mt-12 pt-12 border-t border-white/5 flex justify-between items-center opacity-40 grayscale pointer-events-none">
+               </form>
+
+               <div className="mt-6">
+                  <a
+                     href="https://sudo-mia-92.github.io/BCMA-Scan2BSafeWebsite"
+                     target="_blank"
+                     rel="noopener noreferrer"
+                     className="w-full inline-flex items-center justify-center gap-2 bg-white border border-white/10 rounded-xl py-4 text-hospital-navy font-bold text-sm font-mono hover:bg-slate-100 transition-all uppercase"
+                  >
+                     <Globe size={16} />
+                     Main Website
+                  </a>
+               </div>
+
+               <div className="mt-12 pt-12 border-t border-white/5 flex justify-between items-center opacity-40 grayscale pointer-events-none">
              <Activity size={24} />
              <Activity size={24} />
              <Activity size={24} />

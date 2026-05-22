@@ -10,6 +10,7 @@ Built around the Barcode Medication Administration (BCMA) system used in actual 
 
 Every wrong decision has a consequence. Every right one has a reason.
 Students don't just read about medication safety — they experience the moment the allergy alert fires, feel the pressure of a deteriorating patient, and learn why BCMA confirmation alone doesn't mean it's safe to give the drug.
+
 For nursing schools, it's a return demonstration tool that runs 24/7 without consuming clinical hours. For students, it's the safest place to make mistakes — and actually learn from them.
 
 Because the best time to learn what not to do is before the patient is real.
