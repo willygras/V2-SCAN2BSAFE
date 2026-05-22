@@ -50,7 +50,8 @@ import {
   Monitor,
   Heart,
   Droplets,
-  Wind
+  Wind,
+  Globe
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 
@@ -2769,6 +2770,12 @@ export default function App() {
                       className="flex-1 py-5 bg-hospital-slate text-white border border-white/10 font-bold rounded-2xl flex items-center justify-center gap-3 active:scale-95 transition-all uppercase"
                    >
                       <LogOut size={18} /> Exit Simulation
+                   </button>
+                   <button 
+                      onClick={() => window.open('https://sudo-mia-92.github.io/BCMA-Scan2BSafeWebsite/', '_blank')}
+                      className="flex-1 py-5 bg-accent-teal text-hospital-navy font-bold rounded-2xl flex items-center justify-center gap-3 active:scale-95 transition-all uppercase shadow-lg shadow-teal-500/10 hover:bg-teal-400"
+                   >
+                      <Globe size={18} /> Main Website
                    </button>
                 </div>
              </div>
