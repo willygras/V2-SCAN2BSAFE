@@ -150,7 +150,7 @@ const ALL_CASES: CaseScenario[] = [
     studentId: 'SN-6241',
     supervisor: 'Nurse Supervisor M. Santos, RN',
     patient: {
-      name: 'Conny Fowler',
+      name: 'Sinig Gang',
       age: 81,
       room: '212-B',
       priority: 'CLOSE MONITORING',
@@ -189,8 +189,8 @@ const ALL_CASES: CaseScenario[] = [
         ]
       },
       scan: {
-        patientBarcodeOverride: 'Tony Fowler',
-        alertMsg: "FLAG: Name discrepancy detected. Scanned: Tony Fowler. Expected: Conny Fowler."
+        patientBarcodeOverride: 'Sisig Gang',
+        alertMsg: "FLAG: Name discrepancy detected. Scanned: Sisig Gang. Expected: Sinig Gang."
       },
       administration: {
         question: "Should Omeprazole be given as a rapid IV push?",
@@ -209,7 +209,7 @@ const ALL_CASES: CaseScenario[] = [
     studentId: 'SN-7015',
     supervisor: 'Nurse Supervisor R. Villanueva, RN',
     patient: {
-      name: 'Maria Gonzales',
+      name: 'Mary Yenda',
       age: 67,
       room: '418-A',
       priority: 'CLOSE MONITORING',
@@ -283,7 +283,7 @@ const ALL_CASES: CaseScenario[] = [
     studentId: 'SN-9032',
     supervisor: 'Nurse Supervisor J. Lim, RN',
     patient: {
-      name: 'Elena Bautista',
+      name: 'Pia Lum',
       age: 72,
       room: '306-B',
       priority: 'CLOSE MONITORING',
@@ -349,7 +349,7 @@ const ALL_CASES: CaseScenario[] = [
     studentId: 'SN-0042',
     supervisor: 'Nurse Supervisor S. Santos, RN',
     patient: {
-      name: 'Juan Dela Cruz',
+      name: 'Banan Akew',
       age: 42,
       room: '305-B',
       priority: 'NORMAL',
@@ -409,7 +409,7 @@ const ALL_CASES: CaseScenario[] = [
     studentId: 'SN-0051',
     supervisor: 'Nurse Supervisor B. Cruz, RN',
     patient: {
-      name: 'Angela Ramos',
+      name: 'Lou Gaw',
       age: 28,
       room: 'OB-101',
       priority: 'EMERGENCY',
@@ -463,7 +463,7 @@ const ALL_CASES: CaseScenario[] = [
     studentId: 'SN-0062',
     supervisor: 'Nurse Supervisor C. Go, RN',
     patient: {
-      name: 'Nichole Bautista',
+      name: 'Ley Cheflan',
       age: 32,
       room: 'OB-204',
       priority: 'CRITICAL',
@@ -521,7 +521,7 @@ const ALL_CASES: CaseScenario[] = [
     studentId: 'SN-0071',
     supervisor: 'Nurse Supervisor D. Lim, RN',
     patient: {
-      name: 'Carla Mendoza',
+      name: 'Chi Sharon',
       age: 26,
       room: 'OB-305',
       priority: 'NORMAL',
@@ -577,7 +577,7 @@ const ALL_CASES: CaseScenario[] = [
     studentId: 'RN-4022',
     supervisor: 'Nurse Supervisor K. Lee, RN',
     patient: {
-      name: 'Alex Martinez',
+      name: 'Tin Nola',
       age: 4,
       weight: 16,
       room: 'Pedia-3B',
@@ -622,7 +622,7 @@ const ALL_CASES: CaseScenario[] = [
     studentId: 'RN-4022',
     supervisor: 'Nurse Supervisor K. Lee, RN',
     patient: {
-      name: 'Mika Sato',
+      name: 'Bats Choy',
       age: 5,
       weight: 18,
       room: 'Pedia-3B',
@@ -672,7 +672,7 @@ const ALL_CASES: CaseScenario[] = [
     studentId: 'SN-1120',
     supervisor: 'Nurse Supervisor L. White, RN',
     patient: {
-      name: 'Liam Drake',
+      name: 'Mamisa Baw',
       age: 8,
       weight: 25,
       room: 'Pedia-2A',
@@ -684,7 +684,7 @@ const ALL_CASES: CaseScenario[] = [
         { label: 'HR', value: '98', icon: <Heart size={16} />, status: 'normal' },
         { label: 'Pain', value: '7/10', icon: <AlertCircle size={16} />, status: 'high' },
       ],
-      nursingNote: "Liam is holding his abdomen. Pain is severe.",
+      nursingNote: "Mamisa is holding his abdomen. Pain is severe.",
       endorsement: "Post-op Day 1. Complaining of 7/10 pain. Order for PRN analgesics.",
       mrn: 'MRN-33041'
     },
@@ -973,7 +973,9 @@ export default function App() {
                 <div className="h-[1px] bg-white/5 flex-1" />
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {ALL_CASES.filter(c => c.ward === ward).map(c => (
+                {ALL_CASES.filter(c => c.ward === ward)
+                  .sort((a, b) => a.patient.name.localeCompare(b.patient.name))
+                  .map(c => (
                   <motion.button
                     key={c.id}
                     whileHover={{ y: -5 }}
@@ -1061,13 +1063,25 @@ export default function App() {
                </div>
             </div>
 
-            <button 
-              onClick={() => nextStep('profile')}
-              className="w-full bg-hospital-navy text-white font-bold py-5 rounded-2xl flex items-center justify-center gap-3 hover:bg-slate-800 transition-all group"
-            >
-              TAKE OVER CARE 
-              <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
-            </button>
+            <div className="space-y-4">
+              <button 
+                onClick={() => nextStep('profile')}
+                className="w-full bg-hospital-navy text-white font-bold py-5 rounded-2xl flex items-center justify-center gap-3 hover:bg-slate-800 transition-all group"
+              >
+                TAKE OVER CARE 
+                <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
+              </button>
+              
+              <button 
+                onClick={() => {
+                  setSelectedCase(null);
+                  setScreen('selection');
+                }}
+                className="w-full bg-transparent hover:bg-slate-100 text-slate-500 hover:text-hospital-navy font-bold py-3 rounded-2xl flex items-center justify-center gap-2 transition-all text-sm uppercase tracking-wider font-mono"
+              >
+                ← Back to Ward Selection
+              </button>
+            </div>
           </div>
         </motion.div>
       </div>
@@ -1505,7 +1519,7 @@ export default function App() {
                 {/* Wristband Representation */}
                 <div className="w-56 h-12 bg-white rounded-full flex items-center px-6 relative overflow-hidden">
                    <div className="text-[10px] font-mono text-slate-800 font-bold uppercase tracking-widest">
-                      {selectedCase?.id === 'case-1' && !isWristbandChanged ? 'Tony Fowler' : selectedCase?.patient.name}
+                      {selectedCase?.id === 'case-1' && !isWristbandChanged ? 'Sisig Gang' : selectedCase?.patient.name}
                    </div>
                    <div className="ml-auto flex items-center gap-1 opacity-40 grayscale">
                       <div className="w-1 h-8 bg-black" />
@@ -1548,7 +1562,7 @@ export default function App() {
                       
                       <div className="bg-hospital-slate/40 border border-white/10 p-6 rounded-2xl">
                          <h4 className="font-mono text-xs font-bold text-accent-amber uppercase mb-4">Mismatched Wristband Action Required</h4>
-                         <p className="text-sm text-slate-300 mb-6">The scanned patient wristband ("Tony Fowler") does not match the active eMAR record ("Conny Fowler"). Choose your next action:</p>
+                         <p className="text-sm text-slate-300 mb-6">The scanned patient wristband ("Sisig Gang") does not match the active eMAR record ("Sinig Gang"). Choose your next action:</p>
                                 <div className="space-y-3">
                             <button 
                                onClick={() => handleFatal("Fatal Error: Administered medication to a patient with an incorrect identity wristband without resolving the name discrepancy. This is a severe clinical safety failure.")}
@@ -1575,7 +1589,7 @@ export default function App() {
                             className="bg-white/5 border border-white/10 p-6 rounded-2xl space-y-6"
                          >
                             <div className="p-4 bg-slate-100/5 rounded-xl border border-white/5 italic text-sm text-slate-300">
-                               "The patient states: 'My name is Conny Fowler, and my birthday is June 14, 1945.'"
+                               "The patient states: 'My name is Sinig Gang, and my birthday is June 14, 1945.'"
                             </div>
                             <p className="text-xs text-slate-400">Verbal identity matches eMAR details. You must obtain and apply the correct wristband before administering care.</p>
                             
