@@ -1,4 +1,4 @@
-
+cool app for my twincicle i hope you pass xd
 thank you google ai studio and antigravity i am hopefulyl not jobless 2 years from now thank you.
 
 
